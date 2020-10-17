@@ -20,18 +20,15 @@ import java.net.URI;                // Needed for HTTP calls
 import java.net.http.HttpClient;    // Needed for HTTP calls
 import java.net.http.HttpRequest;   // Needed for HTTP calls
 import java.net.http.HttpResponse;  // Needed for HTTP calls
-import org.apache.commons.validator.routines.UrlValidator;
-
 
 public class Crawler {
 
     // Regex patterns for looking for http links.
     private static final Pattern anchorPattern = Pattern.compile("<a[^>]+?href=[\"']?([\"'>]+)[\"']?[^>]*?>(.+?)</a>",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
-    private static final Pattern linkPattern = Pattern.compile("href=[\"'](http|https)://.*?[\"']",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
+    //TODO: is it good
+    //private static final Pattern linkPattern = Pattern.compile("href=[\"'](http|https)://.*?[\"']",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
+    private static final Pattern linkPattern = Pattern.compile("((href=\"(http|https)://.*?\")|(href='(http|https)://.*?'))",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
     private static final Pattern httpPattern = Pattern.compile("(http|https)://.+?",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
-
-    String[] schemes = {"http","https"};
-    UrlValidator urlValidator = new UrlValidator(schemes);
 
 
     /**
@@ -64,6 +61,10 @@ public class Crawler {
      */
     public static void main(String[] args)
     {
+        //TODO: delete
+        args = new String[2];
+        args[0] = "http://oracle.com";
+        args[1] = "30";
 
         if (args.length != 2){
             System.err.println("Usage: java Crawler <url> <numHops>");
@@ -86,11 +87,13 @@ public class Crawler {
         }
 
         // The crawl method handles the crawling logic.
+        System.out.println("<!-- Crawling the web:");
         String toPrint = crawl(startingURL, numHops);
 
         // Print the last page if it can be printed.
         if(toPrint != null){
-            System.out.println("\n\nThe last page is printed below:     ------------");
+            System.out.println("\n\n\nFinished Crawling");
+            System.out.println("The last page is printed below:     ------------>");
             System.out.println(toPrint);
         }else{
             System.out.println("Can't print response.");
@@ -119,7 +122,9 @@ public class Crawler {
         // If there is an anchor tag
         while(anchorMatcher.find()){
 
-            Matcher linkMatcher = linkPattern.matcher(anchorMatcher.group());
+            String anchor = anchorMatcher.group();
+
+            Matcher linkMatcher = linkPattern.matcher(anchor);
 
             // If it has an http or https link
             if(linkMatcher.find()){
@@ -257,7 +262,7 @@ public class Crawler {
                 continue;
             }
             
-            // Print the url in fancy way.
+            // Print the url in a fancy way.
             printURL(curResource, response);
 
             if(response.statusCode() < 100){
@@ -266,13 +271,12 @@ public class Crawler {
                 
             }else if (response.statusCode() < 200){
                 // informational 1xx
-                // TODO: Is this finished
 
                 toPrint = response.headers().toString();
+
             }else if (response.statusCode() < 300){
                 // success 2xx
-
-                // parse the html;
+                // parse the html
 
                 String htmlPage = response.body();
                 toPrint = htmlPage;
@@ -286,6 +290,10 @@ public class Crawler {
                     stackURLS(st, urls, curResource.curHop + 1);
                 }else{
                     System.out.println("Can't find links");
+                    System.out.println("Assignment requires program termination");
+
+                    // If you want to backtrack instead, uncomment the continue line.
+                    //continue;
                     break;
                 }
 
