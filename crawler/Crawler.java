@@ -17,8 +17,13 @@ import java.net.http.HttpResponse;  // Needed for HTTP calls
 public class Crawler {
 
     // Regex patterns for looking for http links.
+    // looks for anchors
     private static final Pattern anchorPattern = Pattern.compile("<a[^>]+?href=[\"']?([\"'>]+)[\"']?[^>]*?>(.+?)</a>",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
+    
+    // looks for http/https links in anchors
     private static final Pattern linkPattern = Pattern.compile("((href=\"(http|https)://.*?\")|(href='(http|https)://.*?'))",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
+    
+    // looks for http/https links in general.
     private static final Pattern httpPattern = Pattern.compile("(http|https)://.+?",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
 
 
@@ -136,13 +141,13 @@ public class Crawler {
     public static HttpResponse<String> getPage(HttpClient client, String url)
     {
 
-        // create request
-        HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(url))
-                    .GET()
-                    .build();
-
         try{
+
+            // create request
+            HttpRequest request = HttpRequest.newBuilder()
+            .uri(new URI(url))
+            .GET()
+            .build();
 
             // send the request
             return client.send(request,
@@ -225,6 +230,7 @@ public class Crawler {
 
         HashSet<String> visitedSet = new HashSet<>();
 
+        // Depth First search using a stack and while loop.
         while(!st.isEmpty()){
             curResource = st.peek();
             st.pop();
@@ -252,7 +258,9 @@ public class Crawler {
             // Print the url in a fancy way.
             printURL(curResource, response);
 
+            // The request is handled depending on the response value.
             if(response.statusCode() < 100){
+                //0xx
     
                 System.out.println("Status code is smaller than 1xx: " + response.statusCode());
                 
