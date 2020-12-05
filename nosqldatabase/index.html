@@ -16,56 +16,64 @@
 		crossorigin="anonymous" /> 
 
 	<title> 
-		How to use simple API using AJAX ? 
+		People Database
 	</title> 
 </head> 
 
-<body> 
-	<button type="button" id="fetchBtn"
+<body>
+
+    <br>
+    <button type="button" id="loadBtn"
 			class="btn btn-primary"> 
-		Fetch Data 
+		Load 
+    </button> 
+
+    <button type="button" id="clearBtn"
+			class="btn btn-primary"> 
+		Clear 
+    </button>
+
+    <button type="button" id="queryBtn"
+			class="btn btn-primary"> 
+		Query 
 	</button> 
 
 	<div class="container"> 
-		<h1>Employee List</h1> 
-		<ul id="list"></ul> 
-	</div> 
+        <h1>Output</h1> 
+		<p id="console"></p> 
+    </div>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, 
 		then Bootstrap JS -->
 	<script> 
-		let fetchBtn = document.getElementById("fetchBtn"); 
+		let loadBtn = document.getElementById("loadBtn"); 
 
-		fetchBtn.addEventListener("click", buttonclickhandler); 
+		loadBtn.addEventListener("click", loadbuttonclickhandler); 
 
-		function buttonclickhandler() { 
+		function loadbuttonclickhandler() { 
 
 			// Instantiate an new XHR Object 
 			const xhr = new XMLHttpRequest(); 
 
-			// Open an obejct (GET/POST, PATH, 
+			// Open an object (GET/POST, PATH, 
 			// ASYN-TRUE/FALSE) 
-			xhr.open("GET", 
-"http://dummy.restapiexample.com/api/v1/employees", true); 
-
-
-
-
+            xhr.open("PUT", "https://svj981o6h4.execute-api.us-west-2.amazonaws.com/prod", true); 
+            
 			// When response is ready 
 			xhr.onload = function () { 
 				if (this.status === 200) { 
 
 					// Changing string data into JSON Object 
-					obj = JSON.parse(this.responseText); 
+					//obj = JSON.parse(this.responseText); 
 
 					// Getting the ul element 
-					let list = document.getElementById("list"); 
-					str = "" 
-					for (key in obj.data) { 
-						str += 
-						`<li>${obj.data[key].employee_name}</li>`; 
-					} 
+					let list = document.getElementById("console"); 
+					str = this.responseText
+					// for (key in obj.data) { 
+					// 	str += 
+					// 	`<li>${obj.data[key].employee_name}</li>`; 
+					// } 
 					list.innerHTML = str; 
 				} 
 				else { 
