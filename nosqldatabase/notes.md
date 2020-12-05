@@ -24,3 +24,19 @@ Overwrite my entries.
 Masonite, flask, django.
 
 Assume good input.
+
+What if the input doesn't exist?
+
+Test pagination for scan.
+
+Clean the files
+
+return status in the body.
+
+Error handling in clear, load, and query.
+
+Change firstname and lastname to lower case.
+
+Query not found.
+
+https://chicken-in-the-cloud.s3-us-west-2.amazonaws.com/text.txt
