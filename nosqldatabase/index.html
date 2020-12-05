@@ -46,7 +46,9 @@
 
 			// Open an obejct (GET/POST, PATH, 
 			// ASYN-TRUE/FALSE) 
-			xhr.open("GET", "https://svj981o6h4.execute-api.us-west-2.amazonaws.com/prod", true); 
+            xhr.open("GET", "https://svj981o6h4.execute-api.us-west-2.amazonaws.com/prod", true); 
+            xhr.setRequestHeader('X-PINGOTHER', 'pingpong');
+            xhr.setRequestHeader('Content-Type', 'application/xml');
 
 
 			// When response is ready 
