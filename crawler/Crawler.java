@@ -15,15 +15,22 @@ import java.net.http.HttpRequest;   // Needed for HTTP calls
 import java.net.http.HttpResponse;  // Needed for HTTP calls
 
 public class Crawler {
+ 
+    //  Regex patterns for looking for http links.
 
-    // Regex patterns for looking for http links.
-    // looks for anchors
+    /**
+     * looks for anchors
+     */
     private static final Pattern anchorPattern = Pattern.compile("<a[^>]+?href=[\"']?([\"'>]+)[\"']?[^>]*?>(.+?)</a>",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
-    
-    // looks for http/https links in anchors
+     
+    /**
+     * looks for http/https links in anchors
+     */
     private static final Pattern linkPattern = Pattern.compile("((href=\"(http|https)://.*?\")|(href='(http|https)://.*?'))",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
     
-    // looks for http/https links in general.
+    /**
+     * looks for http/https links in general.
+     */
     private static final Pattern httpPattern = Pattern.compile("(http|https)://.+?",  Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
 
 
