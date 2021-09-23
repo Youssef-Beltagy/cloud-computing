@@ -41,7 +41,7 @@ def upload (dir)
     
 ```
 
-To download, I use a for loop. S3 is flat non-hierarchical storage. So the for loop gives me all the objects in the storage. I split the file name from its path and use os.mkdirs() to make those directories. Then I write the file.
+To download, I use a for loop. S3 is flat, non-hierarchical storage. So the for loop gives me all the objects in the storage. I split the file name from its path and use os.mkdirs() to make those directories. Then I write the file.
 
 When I download, I don't delete what is in the directory. So the directory after downloading will contain all of what it used to contain in addition to what is in the S3 bucket.
 
@@ -57,7 +57,7 @@ Sometimes AWS S3 would not delete files or delete buckets. My program depends on
 
 Since I compare files using only their names and modification dates before downloading or uploading, the program might not update some special cases. Consider two directories with the modification date, the same directory structure, and the same file names. The only difference is that those files contain different values.
 
-Using my current upload, if you upload directory one to chicken-bucket that will succeed. But try updating directory two to chicken bucket and it will never replace the directory one contents in S3. This is by design because Dr. Dimpsey required that performance improvement. If it were up to me, I would simply clear the bucket every and upload everything every time. That seems like a more expected behaviour. Of course, we can go the Linus Torvalis route and make Git!
+Using my current upload, if you upload directory one to chicken-bucket that will succeed. But try updating directory two to chicken bucket and it will never replace the directory one contents in S3. This is by design because Dr. Dimpsey required that performance improvement. If it were up to me, I would simply clear the bucket every time and upload everything every time. That seems like a more expected behaviour. Of course, we can go the Linus Torvalis route and make Git!
 
 Another possible solutions other than using diffs, would be to hash the files and use the hash in comparison. It is not 100% guaranteed to work, but it will, realistically, almost never fail if a suitable hashing algorithm is chosen.
 
@@ -75,7 +75,7 @@ Re-downloading. For objects that end with "/", these are directories. They were 
 
 Uploading folders that don't exist clears the bucket.
 
-![](D:\Desktop\CSS 436\Programs\filebackup\ou3.PNG)
+![](D:\Desktop\CSS 436\Programs\filebackup\out3.PNG)
 
 Reuploading
 
