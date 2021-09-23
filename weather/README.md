@@ -62,4 +62,4 @@ Because there is no Graphical Interface and different countries can have cities 
 
 ## Output
 
-![](D:\Desktop\CSS 436\Programs\program2\output.PNG)
+![](https://cloud-computing.ybeltagy.com/pics/weather_output.PNG)

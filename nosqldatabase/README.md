@@ -13,14 +13,14 @@ Here is the API url (Link no longer works): https://svj981o6h4.execute-api.us-we
 
 I didn't make a website. I made a restful API using AWS's lambdas. The website itself is just a way to use the API.
 
-![](webpage.PNG)
+![](https://cloud-computing.ybeltagy.com/pics/nosql_webpage.PNG)
 
 Initially, I intended to write JavaScript code that will execute in the user's browser, make the API calls, and display the results. However, because of CORS issues, I couldn't do that. So I made an asp.net webpage. If I was more experienced with JavaScript, I could have figured it out.
 
 I wrote Lambda functions to handle all the logic. I provide access to these lambda functions through AWS's API-Gateway. I use GET to query the database, PUT to load data into the database, and DELETE to clear the database.
 
 In this design diagram, the request is black and the response is green.
-![](design.png)
+![](https://cloud-computing.ybeltagy.com/pics/nosql_design.PNG)
 
 ## Scale
 
@@ -40,7 +40,7 @@ In fact, I can monitor S3 and DynamoDB through Cloud Watch as well. I get a lot 
 
 But my opinion is that all of this information is useless right now because nobody uses my awesome API.
 
-![](cloudwatch.PNG)
+![](https://cloud-computing.ybeltagy.com/pics/nosql_cloudwatch.PNG)
 
 
 

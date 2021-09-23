@@ -67,16 +67,16 @@ A similar issue happens for download and can be solved using the same techniques
 
 Upload and Download
 
-![](D:\Desktop\CSS 436\Programs\filebackup\out1.PNG)
+![](https://cloud-computing.ybeltagy.com/pics/backup_out1.PNG)
 
 Re-downloading. For objects that end with "/", these are directories. They were simply created if they are not already there. os.mkdirs() handles that logic.
 
-![](D:\Desktop\CSS 436\Programs\filebackup\out6.PNG)
+![](https://cloud-computing.ybeltagy.com/pics/backup_out6.PNG)
 
 Uploading folders that don't exist clears the bucket.
 
-![](D:\Desktop\CSS 436\Programs\filebackup\out3.PNG)
+![](https://cloud-computing.ybeltagy.com/pics/backup_out3.PNG)
 
 Reuploading
 
-![](D:\Desktop\CSS 436\Programs\filebackup\out5.PNG)
+![](https://cloud-computing.ybeltagy.com/pics/backup_out5.PNG)

@@ -31,6 +31,6 @@ The program terminates when the specified number of hobs is reached, there are n
 The output for ``` java Crawler http://courses.washington.edu/css502/dimpsey/ 50 ``` is in output.html. You can't open it with your browser because it has relative links for css and js files.
 
 Here is a screenshot as well.
-![](output.PNG)
+![](https://cloud-computing.ybeltagy.com/pics/crawler_output.PNG)
 
 
