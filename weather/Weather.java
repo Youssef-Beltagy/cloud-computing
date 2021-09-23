@@ -33,8 +33,9 @@ public class Weather {
     }
 
     // OpenWeahter API KEY.
-    // FIXME: put you openweathermap.org API key here
-    private static String apiKey = "";
+    // I left it in the submission so the program will work without a fuss.
+    // TODO: Delete after submission.
+    private static String apiKey = "3b4b66d194ace45bf8379b46b5a382d6";
 
     // HttpClient declared here for reuse
     // Follows redircts

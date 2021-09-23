@@ -51,7 +51,7 @@ def lambda_handler(event, context):
 
     #Copy the s3 object
     copy_source = {
-          'Bucket': my_bucket, #TODO: change to input_bucket
+          'Bucket': input_bucket, #TODO: change to input_bucket
           'Key': input_file_key,
         }
         

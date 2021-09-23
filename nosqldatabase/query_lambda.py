@@ -36,7 +36,7 @@ def get_item_response(event, table):
 
     return {
         'statusCode': 200,
-        'body': json.dumps(response['Item'])
+        'body': json.dumps([response['Item']])
     }
 
 def get_lastname_response(event, table):
