@@ -12,10 +12,10 @@ Walter Bottle weight=8oz id=7654
 Beltagy Youssef id=2345 age=1341
 Beltagy Youssef
 Beltagy Youssef work=student profit=None legs=3 age=1300
-Beltagy Yehia
-Beltagy Ahmed
-Beltagy Mohamed
-Beltagy Ola
-Beltagy Mariam
+Beltagy Y
+Beltagy A
+Beltagy M
+Beltagy O
+Beltagy M
 Chicken Youssef
-potoato Youssef id=25 legs=5 age=325
+potato Youssef id=25 legs=5 age=325
